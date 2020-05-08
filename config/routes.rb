@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+ 
+  resources :users
   resources :game_scores
   resources :game_tables
   root 'sessions#new'
@@ -8,6 +9,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  resources :users
+  
   
 end

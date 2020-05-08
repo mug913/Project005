@@ -1,0 +1,15 @@
+<html>
+    <body>
+    
+    <%= form_for @score do |s| %>
+    
+         <%= s.label :score %>
+         <%= s.number_field :score %> 
+
+
+ <%= s.submit "Record Score" %>
+<% end %>
+
+    </body>
+</html>
+    
