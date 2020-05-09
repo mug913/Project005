@@ -6,17 +6,17 @@ class GameScoresController < ApplicationController
     
     def create
         @score = current_user.game_scores.build(score_params)
-        if  @score.save
-          redirect_to user_path(current_user)
+        if  @score.save!
+            redirect_to user_path(current_user)
         else
-          render :new
+            render :new
         end
     end
 
     private
 
     def score_params
-        params.require(:score).permit(:score,:date)
+        params.require(:game_score).permit(:score,:score_date, :game_table_id)
     end
 
 end

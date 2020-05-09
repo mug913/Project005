@@ -1,11 +1,13 @@
 <h1> User Page </h1>
 <html>
     <body>
-    <%= @scores.each do |s|%>
+    <% @user.game_scores.each do |s|%>
     <%=s.score%>
     <%end%>
-      
-    <%= link_to 'Record New Score', new_game_score_path%>
+
+       <%= @user.game_scores.count%>
+   
+       <%= link_to 'Record New Score', new_game_score_path%>
 
         <%= link_to 'Log out', logout_path, method: :delete %>
     </body>

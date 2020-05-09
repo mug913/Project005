@@ -1,14 +1,18 @@
 <html>
     <body>
     
-    <%= form_for @score do |s| %>
+    <%= form_for(@score) do |f| %>
     
-         <%= s.label :score %>
-         <%= s.number_field :score %> 
+        <%= f.label :score %>
+        <%= f.number_field :score %> 
+        <%= f.label :score_date %>
+        <%= f.date_field :score_date %>
 
+        <%= f.label :game_table, "Select a table" %>
+        <%= f.collection_select :game_table_id, GameTable.all, :id, :name %>
 
- <%= s.submit "Record Score" %>
-<% end %>
+        <%= f.submit "Record Score" %>
+    <% end %>
 
     </body>
 </html>
