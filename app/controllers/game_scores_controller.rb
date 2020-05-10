@@ -17,6 +17,12 @@ class GameScoresController < ApplicationController
         end
     end
 
+    def index
+        @user = User.find_by(id: current_user)
+        @scores = @user.game_scores.all
+    end
+
+
     private
 
     def score_params

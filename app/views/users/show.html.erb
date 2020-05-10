@@ -12,7 +12,10 @@
     Number of Scores: <%= @user.game_scores.count%>
     <br>
     
-    <%= link_to 'Record New Score', new_game_score_path%>
+    <%= link_to 'Record New Score', new_user_game_score_path(@user)%>
+    <br>
+    <br>
+    <%= link_to 'All Scores', user_game_scores_path(@user)%>
     <br>
         <%= link_to 'Log out', logout_path, method: :delete %>
     </body>
