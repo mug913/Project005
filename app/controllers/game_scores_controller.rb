@@ -1,7 +1,11 @@
 class GameScoresController < ApplicationController
 
     def new
-        @score = GameScore.new
+        if params[:game_table_id] && table = GameTable.find_by_id(params[:game_table_id])
+            @score = table.game_scores.build
+        else
+            @score = GameScore.new
+        end
     end
     
     def create
@@ -16,7 +20,7 @@ class GameScoresController < ApplicationController
     private
 
     def score_params
-        params.require(:game_score).permit(:score,:score_date, :game_table_id)
+        params.require(:game_score).permit(:score, :score_date, :game_table_id)
     end
 
 end

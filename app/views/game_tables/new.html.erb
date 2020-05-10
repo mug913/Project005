@@ -1,0 +1,18 @@
+
+<%= form_for @table do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %> 
+    <%= f.label :year %>
+    <%= f.number_field :year %>
+        <%= f.fields_for :game_scores, GameScore.new do |s| %>
+            <%= s.label :score %>
+            <%= s.number_field :score %> 
+            <%= s.label :score_date %>
+            <%= s.date_field :score_date %> 
+            <%= s.hidden_field :user_id, :value => @user.id %>
+        <% end %>
+    
+    <%= f.submit "Create Table" %>
+
+<% end %>

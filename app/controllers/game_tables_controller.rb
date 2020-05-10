@@ -2,13 +2,13 @@ class GameTablesController < ApplicationController
 
     def new
         @table = GameTable.new
+        @user = current_user
     end
     
     def create
-        @table = GameTable.new(table_params)
-        if  @table.save
-            session[:table_id] = @table.id
-            redirect_to user_path(@table)
+        @table = current_user.game_tables.build(table_params)
+        if  @table.save!
+            redirect_to user_path(current_user)
         else
             render :new
         end
@@ -17,6 +17,6 @@ class GameTablesController < ApplicationController
     private
 
     def table_params
-        params.require(:table).permit(:name, :year)
+        params.require(:game_table).permit(:name, :year, game_scores_attributes: [:score, :score_date, :user_id])
     end
 end
