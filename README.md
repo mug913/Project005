@@ -24,3 +24,10 @@ Confirm:
 - [ ] Limited logic in controllers
 - [ ] Views use helper methods if appropriate
 - [ ] Views use partials if appropriate
+
+To Do:
+- [ ] Add Locations Table
+- [ ] Allow Location to be selectable when score is entered.
+- [ ] User's Top Five Scores
+- [ ] User's most recent scores
+
