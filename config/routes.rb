@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #root 'application#index'
   #root to: 'dashboards#show'
   
-  admin_root to: 'application#admin'
+  # admin_root to: 'application#admin'
   root to: 'application#index'
   devise_for :users
 
