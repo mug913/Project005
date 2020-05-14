@@ -25,7 +25,7 @@ Confirm:
 - [ ] Views use helper methods if appropriate
 - [ ] Views use partials if appropriate
 
-To Do:
+Nest To Do:
 - [ ] Add Locations Table
 - [ ] Allow Location to be selectable when score is entered.
 - [ ] User's Top Five Scores

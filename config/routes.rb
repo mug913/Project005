@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_scope :admin do 
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
     get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
-  end
-  
+    get 'admins/sessions/dashboard', to: 'admins/sessions#dashboard', as: :admin_dashboard   end
+
   #root 'application#index'
   #root to: 'dashboards#show'
   
