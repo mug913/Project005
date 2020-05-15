@@ -5,6 +5,7 @@
     <% @user.game_scores.each do |s|%>
     <%=s.score%> 
     <%=s.game_table.name%>
+    <%=s.score_date.strftime("%D")%>  
     <br>
     <%end%>
     </body>

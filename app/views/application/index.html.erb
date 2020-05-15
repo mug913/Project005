@@ -1,5 +1,10 @@
 <h1> Welcome To PinBrawler! </h1>
-
+<html>
+<body>
+<p>Number of Players: <%= User.count %> </p>
+<p>Number of Scores: <%= GameScore.count %> </p>
+<p>Number of Tables: <%= GameTable.count %> </p>
 <%= link_to "Register", new_user_registration_path %>
+<br>
 <%= link_to "Sign In", new_user_session_path %>
 

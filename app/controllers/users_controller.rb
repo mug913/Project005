@@ -2,8 +2,9 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: current_user)
-        @scores = @user.game_scores.desc_order
-        
+        @scores = @user.game_scores.desc_date
+        @table = GameTable.find_by(id: @user.game_scores.fav_table)
+                
     end
 
     def update
