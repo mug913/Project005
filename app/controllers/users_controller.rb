@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: current_user)
-        @scores = @user.game_scores.all
+        @scores = @user.game_scores.desc_order
+        
     end
 
     def update

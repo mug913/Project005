@@ -2,11 +2,13 @@
 <html>
 <body>
 
-    <% @user.game_scores.each do |s|%>
-    <%=s.score%> 
-    <%=s.game_table.name%>
+    
+    <% @scores.each do |s|%>
+        <%=s.score%>
+        <% end %> 
+   
     <br>
-    <%end%>
+   
     
     <br>
     Number of Scores: <%= @user.game_scores.count%>

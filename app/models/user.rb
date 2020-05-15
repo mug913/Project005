@@ -12,7 +12,9 @@ class User < ApplicationRecord
     validates :username, :email, presence: true
     validates :username, :email, uniqueness: true
 
-   # def authenticatable_salt
+
+ 
+     # def authenticatable_salt
  #     "#{super}#{session_token}"
   #  end
     

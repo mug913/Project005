@@ -3,4 +3,7 @@ class GameScore < ApplicationRecord
   belongs_to :game_table
 
   validates :score, :score_date, presence: true
+
+
+  scope :desc_order, -> { order(score: :desc) }
 end
