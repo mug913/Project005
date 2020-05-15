@@ -7,6 +7,10 @@ class UsersController < ApplicationController
                 
     end
 
+    def most_scores
+        @topuser = User.find_by(id: GameScore.topuser)
+    end
+
     def update
         redirect_to user_path(current_user)
     end

@@ -7,4 +7,5 @@ class GameScore < ApplicationRecord
 
   scope :desc_date, -> { order(score_date: :desc) }
   scope :fav_table, -> { group('game_table_id').order('count(*) desc').limit(1).pluck(:game_table_id).first }
+  scope :topuser, -> { group('user_id').order('count(*) desc').limit(1).pluck(:user_id).first }
 end

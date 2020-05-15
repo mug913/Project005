@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   root to: 'application#index'
   devise_for :users
 
+  get 'users/most_scores', to: 'users#most_scores', as: :user_most_scores
   resources :users do
+    
     resources :game_scores, only: [:new, :create, :index]
   end
   resources :game_scores
