@@ -10,7 +10,6 @@ class GameTablesController < ApplicationController
         if  @table.save
             redirect_to user_path(current_user)
         else
-            flash[:error] = "Please fill all fields."
             render :new
         end
     end

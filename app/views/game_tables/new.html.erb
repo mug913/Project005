@@ -1,15 +1,25 @@
+<h1> Add a New Table and Score </h1>
 
+<%= render 'shared/errors', object: @table %>
 <%= form_for @table do |f| %>
 
+    <div class="field<%= ' field_with_errors' if @table.errors[:name].any? %>">
     <%= f.label :name %>
     <%= f.text_field :name %> 
+    </div>
+    <div class="field<%= ' field_with_errors' if @table.errors[:year].any? %>">
     <%= f.label :year %>
     <%= f.number_field :year %>
+    </div>
         <%= f.fields_for :game_scores, GameScore.new do |s| %>
+            <div class="field<%= ' field_with_errors' if @table.errors[:score].any? %>">
             <%= s.label :score %>
             <%= s.number_field :score %> 
+            </div>
+            <div class="field<%= ' field_with_errors' if @table.errors[:score_date].any? %>">
             <%= s.label :score_date %>
             <%= s.date_field :score_date %> 
+            </div>
             <%= s.hidden_field :user_id, :value => current_user.id %>
         <% end %>
     
