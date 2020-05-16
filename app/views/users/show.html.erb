@@ -1,17 +1,23 @@
 <h1> <%= @user.username%>'s Score Log: </h1>
 <html>
 <body>
+    
+    <% if @scores.count > 0%>
     Your Most Recent Scores: <br>
-    <% @scores.first(5).each do |s|%>
-      Score: <%=s.score%>
-      Table: <%=s.game_table.name%>  
-      Date:  <%=s.score_date.strftime("%D")%>  
-      <br>
-    <% end %> 
-    <br>
+        <% @scores.first(5).each do |s|%>
+        Score: <%=s.score%>
+        Table: <%=s.game_table.name%>  
+        Date:  <%=s.score_date.strftime("%D")%><br>  
+        <% end %>
+    <% end %>
+   
+   <br>
     Number of Scores: <%= @user.game_scores.count%><br>
-    Favorite Table: <%= @table.name%>
-    <br>
+    
+    Favorite Table: <% if !@table  %> None Recorded 
+                    <%else%><%= @table.name%>
+                    <% end %><br>
+    
     <br>
     <%= link_to 'Add Score', new_user_game_score_path(@user)%>
     <br>
