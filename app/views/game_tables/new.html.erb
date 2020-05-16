@@ -10,11 +10,11 @@
             <%= s.number_field :score %> 
             <%= s.label :score_date %>
             <%= s.date_field :score_date %> 
-            <%= s.hidden_field :user_id, :value => @user.id %>
+            <%= s.hidden_field :user_id, :value => current_user.id %>
         <% end %>
     
     <%= f.submit "Create Table" %>
 
-    <%= link_to 'Cancel', user_path(@user)%>
+    <%= link_to 'Cancel', user_path(current_user)%>
 
 <% end %>

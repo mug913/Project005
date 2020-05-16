@@ -2,9 +2,10 @@
     <body>
     
     <%= form_for(@score) do |f| %>
-    
+    <div class="field<%= ' field_with_errors' if @score.errors[:score].any? %>">
         <%= f.label :score %>
         <%= f.number_field :score %> 
+    </div>
         <%= f.label :score_date %>
         <%= f.date_field :score_date %>
 
@@ -18,7 +19,7 @@
     
     <%= link_to 'New Table', new_game_table_path%>
     <br>
-    <%= link_to 'Cancel', user_path(@user)%>
+    <%= link_to 'Cancel', user_path(current_user)%>
     
     </body>
 </html>

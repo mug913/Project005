@@ -1,6 +1,6 @@
 class GameScoresController < ApplicationController
 
-    before_action :authenticate_user!
+   
     
     def new
         if params[:game_table_id] && table = GameTable.find_by_id(params[:game_table_id])
@@ -12,7 +12,7 @@ class GameScoresController < ApplicationController
     
     def create
         @score = current_user.game_scores.build(score_params)
-        if  @score.save!
+        if  @score.save
             redirect_to user_path(current_user)
         else
             render :new

@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
     
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :authenticate_user!
 
+    add_flash_types :info, :error, :warning
+    
     def index
         if user_signed_in?
             redirect_to user_path(current_user)

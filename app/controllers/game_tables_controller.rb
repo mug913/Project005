@@ -7,9 +7,10 @@ class GameTablesController < ApplicationController
     
     def create
         @table = current_user.game_tables.build(table_params)
-        if  @table.save!
+        if  @table.save
             redirect_to user_path(current_user)
         else
+            flash[:error] = "Please fill all fields."
             render :new
         end
     end
