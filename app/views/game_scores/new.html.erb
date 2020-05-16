@@ -1,18 +1,20 @@
 <html>
     <body>
-    
+    <%= render 'shared/errors', object: @score %>
     <%= form_for(@score) do |f| %>
     
     <div class="field<%= ' field_with_errors' if @score.errors[:score].any? %>">
         <%= f.label :score %>
         <%= f.number_field :score %> 
     </div>
+    <div class="field<%= ' field_with_errors' if @score.errors[:score].any? %>">
         <%= f.label :score_date %>
         <%= f.date_field :score_date %>
-
+    </div>
+    <div class="field<%= ' field_with_errors' if @score.errors[:game_table].any? %>">
         <%= f.label :game_table, "Select a table" %>
         <%= f.collection_select :game_table_id, GameTable.all, :id, :name %>
-
+    </div>
         <%= f.submit "Record Score" %>
     <% end %>
 
