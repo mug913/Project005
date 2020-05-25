@@ -10,7 +10,7 @@
     <%end%>
 
         <%= form_tag(user_game_scores_path, method: :get) do %>
-            <%= collection_select :search, :search.to_s, GameTable.all, :name, :name %>
+            <%= collection_select :search, :game_table, GameTable.all, :name, :name %>
         <%= submit_tag ('Search') %>
     <%end%>
 

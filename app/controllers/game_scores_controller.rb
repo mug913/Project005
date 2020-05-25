@@ -22,7 +22,7 @@ class GameScoresController < ApplicationController
 
     def index
         @user = User.find_by(id: current_user)
-        if (params[:search]) != null
+        if (params[:search]) 
             @scores = @user.game_scores.search(params[:search][:search])
         else
             @scores = @user.game_scores.all
