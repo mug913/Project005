@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
-    #
+    
     before_action :configure_permitted_parameters, if: :devise_controller?
     
-
     add_flash_types :info, :error, :warning
     
+    #check if user already signed in and redirects to user page if so.
     def index
         if user_signed_in?
             redirect_to user_path(current_user)

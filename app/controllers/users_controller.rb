@@ -18,8 +18,8 @@ class UsersController < ApplicationController
     end
 
     def destroy
- #       current_user.invalidate_all_sessions!
- #       super
+        current_user.invalidate_all_sessions!
+        super
         reset_session
         redirect_to root_path
     end
