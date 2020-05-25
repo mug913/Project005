@@ -10,7 +10,7 @@ class GameScore < ApplicationRecord
   scope :topuser, -> { group('user_id').order('count(*) desc').limit(1).pluck(:user_id).first }
 
   def self.search(search)
-    if search != ""
+    if search != "All"
       table = GameTable.find_by(name: search)
       if table
         self.where(game_table_id: table)
