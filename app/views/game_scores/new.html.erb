@@ -1,7 +1,7 @@
 <html>
     <body>
     <%= render 'shared/errors', object: @score %>
-    <%= form_for(@score) do |f| %>
+    <%= form_for [@user, @score] do |f| %>
     
     <div class="field<%= ' field_with_errors' if @score.errors[:score].any? %>">
         <%= f.label :score %>

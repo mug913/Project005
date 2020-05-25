@@ -12,12 +12,9 @@ class User < ApplicationRecord
     validates :username, :email, presence: true
     validates :username, :email, uniqueness: true
 
-     # def authenticatable_salt
- #     "#{super}#{session_token}"
-  #  end
     
- #   def invalidate_all_sessions!
- #     self.session_token = SecureRandom.hex
- #   end
+    def invalidate_all_sessions!
+      self.session_token = SecureRandom.hex
+    end
 
 end

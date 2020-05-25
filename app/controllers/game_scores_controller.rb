@@ -6,6 +6,7 @@ class GameScoresController < ApplicationController
         if params[:game_table_id] && table = GameTable.find_by_id(params[:game_table_id])
             @score = table.game_scores.build
         else
+            @user = current_user
             @score = GameScore.new
         end
     end
@@ -21,7 +22,7 @@ class GameScoresController < ApplicationController
 
     def index
         @user = User.find_by(id: current_user)
-        if (params[:search])
+        if (params[:search]) != null
             @scores = @user.game_scores.search(params[:search][:search])
         else
             @scores = @user.game_scores.all
