@@ -1,6 +1,6 @@
 class GameScoresController < ApplicationController
 
-   
+    before_action :authenticate_user!
     
     def new
         if params[:game_table_id] && table = GameTable.find_by_id(params[:game_table_id])

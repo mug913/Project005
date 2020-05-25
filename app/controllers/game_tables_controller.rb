@@ -1,5 +1,7 @@
 class GameTablesController < ApplicationController
 
+    before_action :authenticate_user!
+    
     def new
         @table = GameTable.new
         @user = current_user
