@@ -21,14 +21,18 @@ class GameScoresController < ApplicationController
 
     def index
         @user = User.find_by(id: current_user)
-        @scores = @user.game_scores.all
+        if (params[:search])
+            @scores = @user.game_scores.search(params[:search][:search])
+        else
+            @scores = @user.game_scores.all
+        end
     end
 
 
     private
 
     def score_params
-        params.require(:game_score).permit(:score, :score_date, :game_table_id)
+        params.require(:game_score).permit(:score, :score_date, :game_table_id, :search)
     end
 
 end

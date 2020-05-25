@@ -2,11 +2,16 @@
 <html>
 <body>
 
-    <% @user.game_scores.each do |s|%>
+    <% @scores.each do |s|%>
     <%=s.score%> 
     <%=s.game_table.name%>
     <%=s.score_date.strftime("%D")%>  
     <br>
+    <%end%>
+
+        <%= form_tag(user_game_scores_path, method: :get) do %>
+            <%= collection_select :search, :search.to_s, GameTable.all, :name, :name %>
+        <%= submit_tag ('Search') %>
     <%end%>
 
     <%= link_to 'Return', user_path(@user)%>

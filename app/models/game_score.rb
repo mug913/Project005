@@ -8,4 +8,18 @@ class GameScore < ApplicationRecord
   scope :desc_date, -> { order(score_date: :desc) }
   scope :fav_table, -> { group('game_table_id').order('count(*) desc').limit(1).pluck(:game_table_id).first }
   scope :topuser, -> { group('user_id').order('count(*) desc').limit(1).pluck(:user_id).first }
+
+  def self.search(search)
+    if search != ""
+      table = GameTable.find_by(name: search)
+      if table
+        self.where(game_table_id: table)
+      else
+        self.all
+      end
+    else
+      self.all
+    end
+  end
+
 end
