@@ -1,19 +1,32 @@
-<h1> <%= @user.username%>'s Score Log: </h1>
+    <%if @user %>
+        <h1>  <%= @user.username%>'s Score Log: </h1>
+    <%end%>
 <html>
 <body>
 
     <% @scores.each do |s|%>
-    <%=s.score%> 
-    <%=s.game_table.name%>
-    <%=s.score_date.strftime("%D")%>  
-    <br>
+        <%=s.score%> 
+        <%=s.game_table.name%>
+        <%=s.score_date.strftime("%D")%>  
+        <%=s.user.username%>  
+        <br>
     <%end%>
 
-        <%= form_tag(user_game_scores_path, method: :get) do %>
+    <% if @user %>
+        <%= form_tag(user_game_scores_path(@user), method: :get) do %>
             <%= collection_select :search, :game_table, GameTable.all, :name, :name %>
-        <%= submit_tag ('Search') %>
+            <%= submit_tag ('Search') %>
+        <%end%>
+        <%= link_to 'Return', user_path(@user)%>
+    <% else %>
+        <%= form_tag(game_scores_path, method: :get) do %>
+            <%= collection_select :search, :game_table, GameTable.all, :name, :name %>
+            <%= submit_tag ('Search') %>
+        <%end%>
     <%end%>
 
-    <%= link_to 'Return', user_path(@user)%>
+    <%= link_to 'Return', root_path%>
+
+    
     </body>
 </html>

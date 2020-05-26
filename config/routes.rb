@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users do
      resources :game_scores, only: [:new, :create, :index]
   end
+  resources :game_scores, only: [:index]
   resources :game_tables
   
   

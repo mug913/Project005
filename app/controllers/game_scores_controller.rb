@@ -12,6 +12,7 @@ class GameScoresController < ApplicationController
     end
     
     def create
+        @user = current_user
         @score = current_user.game_scores.build(score_params)
         if  @score.save
             redirect_to user_path(current_user)
@@ -21,12 +22,13 @@ class GameScoresController < ApplicationController
     end
 
     def index
-        @user = User.find_by(id: current_user)
-        if (params[:search]) 
-            @scores = @user.game_scores.search(params[:search][:search])
+        if (params[:user_id])
+            @user = User.find_by_id(params[:user_id])
+            @scores = @user.game_scores
         else
-            @scores = @user.game_scores.all
+            @scores = GameScore.all
         end
+        @scores = @scores.search(params[:search][:game_table]) if (params[:search]) 
     end
 
 

@@ -4,7 +4,7 @@ class GameScore < ApplicationRecord
 
   validates :score, :score_date, presence: true
   validates_inclusion_of :score, :in => 1..99999999999, :message => "Please enter a valid table score."
-
+ 
   #returns scores sorted by date
   scope :desc_date, -> { order(score_date: :desc) }
   #returns table with most recorded scores on it
@@ -25,5 +25,6 @@ class GameScore < ApplicationRecord
       self.all
     end
   end
+
 
 end
